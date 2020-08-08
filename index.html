@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="js\react.development.js"></script>
+    <script crossorigin src="js\react-dom.development.js"></script>
+    <script src="js\babel.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <th>Country</th>
+            <th>Comfirmed</th>
+            <th>Deaths</th>
+            <th>Recovered</th>
+            <th>Active</th>
+        </thead>
+        <tbody id="root"></tbody>
+    </table>
+
+    <script type="text/babel">
+        const data = [
+            { id: 1, Country: "Italy", Confirmed: "3474", Deaths: "472", Recovered: "2812", Active: "190" },
+            { id: 2, Country: "Brazil", Confirmed: "21376", Deaths: "556", Recovered: "14806", Active: "6014" },
+            { id: 3, Country: "Russia", Confirmed: "2930", Deaths: "21", Recovered: "2254", Active: "655" },
+            { id: 4, Country: "Mexico", Confirmed: "4382", Deaths: "279", Recovered: "3731", Active: "372" },
+            { id: 5, Country: "Japan", Confirmed: "2831", Deaths: "36", Recovered: "917", Active: "258" },
+            { id: 6, Country: "Japan", Confirmed: "32", Deaths: "0", Recovered: "16", Active: "16" },
+            { id: 7, Country: "Brazil", Confirmed: "65916", Deaths: "1654", Recovered: "58825", Active: "5437" },
+            { id: 8, Country: "Canada", Confirmed: "11430", Deaths: "208", Recovered: "10097", Active: "1125" },
+            { id: 9, Country: "Russia", Confirmed: "9809", Deaths: "85", Recovered: "7952", Active: "1772" },
+            { id: 10, Country: "Russia", Confirmed: "1672", Deaths: "7", Recovered: "1329", Active: "336" },
+
+        ];
+
+
+
+
+        function Covid(props) {
+            return(
+                <tr>
+                    <td>{props.id}</td>
+                    <td>{props.Country}</td>
+                    <td>{props.Confirmed}</td>
+                    <td>{props.Deaths}</td>
+                    <td>{props.Recovered}</td>
+                    <td>{props.Active}</td>
+                </tr>
+
+            );
+        }
+        function CovidTracker(props) {
+            return data.map((i, index) => {
+                return (<Covid key={index}
+                    id={i.id}
+                    Country={i.Country}
+                    confirmed={i.confirmed}
+                    Deaths={i.Deaths}
+                    Recovered={i.Recovered}
+                    Active={i.Active}
+                ></Covid>)
+            });
+        }
+        ReactDOM.render(
+            <CovidTracker></CovidTracker>, document.getElementById("root")
+        );
+    </script>
+</body>
+</body>
+
+</html>
